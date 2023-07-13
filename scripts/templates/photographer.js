@@ -1,8 +1,8 @@
-function photographerTemplate(data) {
+const photographerTemplate = (data) => {
   const { name, portrait, city, country, tagline, price, id } = data;
   const picture = `assets/photographers/${portrait}`;
 
-  function getUserCardDOM() {
+  const getUserCardDOM = () => {
     const article = document.createElement("article");
     const link = document.createElement("a");
     const img = document.createElement("img");
@@ -38,6 +38,6 @@ function photographerTemplate(data) {
     article.appendChild(pricing);
 
     return article;
-  }
+  };
   return { name, picture, getUserCardDOM };
-}
+};
