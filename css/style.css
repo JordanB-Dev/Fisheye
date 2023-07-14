@@ -43,7 +43,7 @@ h1 {
     flex-direction: column;
 }
 
-.photographer_section a {
+.photographer_section article a {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -54,9 +54,20 @@ h1 {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 0;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.photograph-location {
+    color: #901C1C;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 3px;
 }
