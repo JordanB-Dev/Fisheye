@@ -16,25 +16,68 @@
         ><img src="assets/images/logo.png" class="logo" alt="fisheye logo"
       /></a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">
           Contactez-moi
         </button>
       </div>
     </main>
-    <div id="contact_modal">
+    <div
+      id="contact_modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-describedby="modal_contact"
+    >
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img
+            src="assets/icons/close.svg"
+            alt="Fermer la modal contact"
+            aria-label="Fermer la modal contact"
+            onclick="closeModal()"
+          />
         </header>
         <form>
-          <div>
+          <div role="group" aria-labelledby="formulaire">
             <label>Prénom</label>
-            <input />
+            <input
+              type="text"
+              id="first"
+              name="first"
+              minlength="2"
+              required
+              aria-required="true"
+            />
+            <label>Nom</label>
+            <input
+              type="text"
+              id="last"
+              name="last"
+              minlength="2"
+              required
+              aria-required="true"
+            />
+            <label>E-mail</label><br />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              aria-required="true"
+            />
+            <label>Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              aria-required="true"
+            ></textarea>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button type="submit" id="btnValid" class="contact_button">
+            Envoyer
+          </button>
         </form>
       </div>
     </div>
