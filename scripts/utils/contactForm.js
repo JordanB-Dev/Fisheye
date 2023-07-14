@@ -43,7 +43,6 @@ const addError = (border) => {
 
 const addSucces = (border) => {
   border.setAttribute("data-error", "false");
-  border.setAttribute("data-succes", "true");
 };
 
 const firstChecker = (value) => {
