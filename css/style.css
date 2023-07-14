@@ -67,14 +67,20 @@ h1 {
 
 .photograph-location {
     color: #901C1C;
-    font-size: 16px;
+    font-size: 13px;
     font-weight: 400;
     margin-bottom: 3px;
 }
 
 .photograph-tagline {
     color: #000000;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 400;
     margin: 0;
+}
+
+.photograph-price {
+    color: #757575;
+    font-size: 9px;
+    font-weight: 400;
 }
