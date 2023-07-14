@@ -19,8 +19,28 @@ const closeModal = () => {
   modal.setAttribute("aria-modal", "false");
 };
 
+const firstChecker = () => {};
+const lastChecker = () => {};
+const emailChecker = () => {};
+const messageChecker = () => {};
+
 inputs.forEach((input) => {
   input.addEventListener("input", (e) => {
-    console.log(e.target.value);
+    switch (e.target.id) {
+      case "first":
+        firstChecker(console.log(e.target.value));
+        break;
+      case "last":
+        lastChecker(console.log(e.target.value));
+        break;
+      case "email":
+        emailChecker(console.log(e.target.value));
+        break;
+      case "message":
+        messageChecker(console.log(e.target.value));
+        break;
+      default:
+        nul;
+    }
   });
 });
