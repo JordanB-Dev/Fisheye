@@ -44,5 +44,5 @@ const photographerTemplate = (data) => {
 
     return article;
   };
-  return { name, picture, getUserCardDOM };
+  return { name, portrait, city, country, tagline, price, id, getUserCardDOM };
 };
