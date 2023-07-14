@@ -1,156 +1,156 @@
-const modal = document.getElementById("contact_modal");
-const main = document.getElementById("main");
-const form = document.querySelector("form");
+const modal = document.getElementById('contact_modal')
+const main = document.getElementById('main')
+const form = document.querySelector('form')
 
 const inputs = document.querySelectorAll(
   'input[type="text"], input[type="email"], textarea[id="message"]'
-);
+)
 
-let firstName, lastName, email, message;
+let firstName, lastName, email, message
 
-const regexText = /^[a-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ\s-]{1,31}$/i;
+const regexText = /^[a-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ\s-]{1,31}$/i
 
 const displayModal = () => {
-  modal.style.display = "block";
-  main.setAttribute("aria-hidden", "true");
-  modal.setAttribute("aria-hidden", "false");
-  modal.setAttribute("aria-modal", "true");
-};
+  modal.style.display = 'block'
+  main.setAttribute('aria-hidden', 'true')
+  modal.setAttribute('aria-hidden', 'false')
+  modal.setAttribute('aria-modal', 'true')
+}
 
 const closeModal = () => {
-  modal.style.display = "none";
-  main.setAttribute("aria-hidden", "false");
-  modal.setAttribute("aria-hidden", "true");
-  modal.setAttribute("aria-modal", "false");
-};
+  modal.style.display = 'none'
+  main.setAttribute('aria-hidden', 'false')
+  modal.setAttribute('aria-hidden', 'true')
+  modal.setAttribute('aria-modal', 'false')
+}
 
 const errorDisplay = (tag, message, valid) => {
-  const span = document.querySelector("." + tag + "-container > span");
+  const span = document.querySelector('.' + tag + '-container > span')
 
   if (!valid) {
-    span.classList.add("error");
-    span.textContent = message;
+    span.classList.add('error')
+    span.textContent = message
   } else {
-    span.classList.remove("error");
-    span.textContent = message;
+    span.classList.remove('error')
+    span.textContent = message
   }
-};
+}
 
 const addError = (border) => {
-  border.setAttribute("data-error", "true");
-  border.setAttribute("data-succes", "false");
-};
+  border.setAttribute('data-error', 'true')
+  border.setAttribute('data-succes', 'false')
+}
 
 const addSucces = (border) => {
-  border.setAttribute("data-error", "false");
-};
+  border.setAttribute('data-error', 'false')
+}
 
 const firstChecker = (value) => {
-  const border = document.getElementById("first");
+  const border = document.getElementById('first')
 
   if (value.length < 2 || value.length > 20) {
     errorDisplay(
-      "first",
-      "Veuillez entrer 2 caractères ou plus pour le champ prénom."
-    );
-    addError(border);
-    firstName = null;
+      'first',
+      'Veuillez entrer 2 caractères ou plus pour le champ prénom.'
+    )
+    addError(border)
+    firstName = null
   } else if (!value.match(regexText)) {
     errorDisplay(
-      "first",
-      "Le prénom ne doit pas contenir de caractères spéciaux"
-    );
-    addError(border);
-    firstName = null;
+      'first',
+      'Le prénom ne doit pas contenir de caractères spéciaux'
+    )
+    addError(border)
+    firstName = null
   } else {
-    errorDisplay("first", "", true);
-    addSucces(border);
-    firstName = value;
+    errorDisplay('first', '', true)
+    addSucces(border)
+    firstName = value
   }
-};
+}
 
 const lastChecker = (value) => {
-  const border = document.getElementById("last");
+  const border = document.getElementById('last')
 
   if (value.length < 2 || value.length > 20) {
     errorDisplay(
-      "last",
-      "Veuillez entrer 2 caractères ou plus pour le champ nom."
-    );
-    addError(border);
-    lastName = null;
+      'last',
+      'Veuillez entrer 2 caractères ou plus pour le champ nom.'
+    )
+    addError(border)
+    lastName = null
   } else if (!value.match(regexText)) {
-    errorDisplay("last", "Le nom ne doit pas contenir de caractères spéciaux");
-    addError(border);
-    lastName = null;
+    errorDisplay('last', 'Le nom ne doit pas contenir de caractères spéciaux')
+    addError(border)
+    lastName = null
   } else {
-    errorDisplay("last", "", true);
-    addSucces(border);
-    lastName = value;
+    errorDisplay('last', '', true)
+    addSucces(border)
+    lastName = value
   }
-};
+}
 
 const emailChecker = (value) => {
-  const border = document.getElementById("email");
+  const border = document.getElementById('email')
 
   if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
-    errorDisplay("email", " L'adresse électronique n'est pas valide");
-    addError(border);
-    email = null;
+    errorDisplay('email', " L'adresse électronique n'est pas valide")
+    addError(border)
+    email = null
   } else {
-    errorDisplay("email", "", true);
-    addSucces(border);
-    email = value;
+    errorDisplay('email', '', true)
+    addSucces(border)
+    email = value
   }
-};
+}
 
 const messageChecker = (value) => {
-  const border = document.getElementById("message");
+  const border = document.getElementById('message')
 
   if (value.length < 20 || value.length > 150) {
     errorDisplay(
-      "message",
-      "Veuillez entrer 20 caractères minimum ou 150 caractères maximum."
-    );
-    addError(border);
-    message = null;
+      'message',
+      'Veuillez entrer 20 caractères minimum ou 150 caractères maximum.'
+    )
+    addError(border)
+    message = null
   } else if (!value.match(regexText)) {
     errorDisplay(
-      "message",
-      "Le nessage ne doit pas contenir de caractères spéciaux"
-    );
-    addError(border);
-    message = null;
+      'message',
+      'Le nessage ne doit pas contenir de caractères spéciaux'
+    )
+    addError(border)
+    message = null
   } else {
-    errorDisplay("message", "", true);
-    addSucces(border);
-    message = value;
+    errorDisplay('message', '', true)
+    addSucces(border)
+    message = value
   }
-};
+}
 
 inputs.forEach((input) => {
-  input.addEventListener("input", (e) => {
+  input.addEventListener('input', (e) => {
     switch (e.target.id) {
-      case "first":
-        firstChecker(e.target.value);
-        break;
-      case "last":
-        lastChecker(e.target.value);
-        break;
-      case "email":
-        emailChecker(e.target.value);
-        break;
-      case "message":
-        messageChecker(e.target.value);
-        break;
+      case 'first':
+        firstChecker(e.target.value)
+        break
+      case 'last':
+        lastChecker(e.target.value)
+        break
+      case 'email':
+        emailChecker(e.target.value)
+        break
+      case 'message':
+        messageChecker(e.target.value)
+        break
       default:
-        nul;
+        nul
     }
-  });
-});
+  })
+})
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
 
   if (firstName && lastName && email && message) {
     const data = {
@@ -158,10 +158,10 @@ form.addEventListener("submit", (e) => {
       lastName,
       email,
       message,
-    };
-    console.log(data);
-    closeModal();
+    }
+    console.log(data)
+    closeModal()
   } else {
-    alert("veuillez remplir correctement les champs");
+    alert('veuillez remplir correctement les champs')
   }
-});
+})
