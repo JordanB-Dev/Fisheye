@@ -3,8 +3,9 @@ const id = params.get('id')
 console.log(id)
 
 const getPhotographer = async () => {
-  const res = await fetch('./data/photographers.json')
-  const data = await res.json()
+  const data = await fetch('./data/photographers.json')
+    .then((response) => response.json())
+    .catch((error) => console.log(error))
 
   const photographerData = data.photographers.filter(
     (photographer) => photographer.id == id
