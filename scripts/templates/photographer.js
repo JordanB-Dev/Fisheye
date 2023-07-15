@@ -46,6 +46,20 @@ const photographerTemplate = (data) => {
   }
 
   const getUserDOM = () => {
+    const photographProfil = document.querySelector('.photograph-header')
+    photographProfil.insertAdjacentHTML(
+      'beforeend',
+      `<div>
+      <h1>${name}</h1>
+      <h3>${city}, ${country}</h3>
+      <p>${tagline}</p>
+    </div>
+      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <div>
+      <img src="${picture}" alt="${name}"></img>
+    </div>
+    `
+    )
     console.log(name)
   }
 
