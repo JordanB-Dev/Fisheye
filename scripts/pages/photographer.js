@@ -3,9 +3,16 @@ const id = params.get('id')
 console.log(id)
 
 const getPhotographer = async () => {
+  const errorApi = document.querySelector('main')
   const data = await fetch('./data/photographers.json')
     .then((response) => response.json())
-    .catch((error) => console.log(error))
+    .catch((error) => {
+      errorApi.insertAdjacentHTML(
+        'beforeend',
+        `<center><h1>404 NOT FOUND</h1></center>`
+      )
+      console.log('Error api:' + ' ' + error)
+    })
 
   const photographerData = data.photographers.filter(
     (photographer) => photographer.id == id

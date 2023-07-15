@@ -1,7 +1,15 @@
 const getPhotographers = async () => {
+  const errorApi = document.querySelector('main')
   const photographers = await fetch('./data/photographers.json')
     .then((response) => response.json())
-    .catch((error) => console.log(error))
+    .catch((error) => {
+      errorApi.insertAdjacentHTML(
+        'beforeend',
+        `<center><h1>404 NOT FOUND</h1></center>`
+      )
+      console.log('Error api:' + ' ' + error)
+    })
+
   return photographers
 }
 
