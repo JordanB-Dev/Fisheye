@@ -49,18 +49,22 @@ const photographerTemplate = (data) => {
     const photographProfil = document.querySelector('.photograph-header')
     photographProfil.insertAdjacentHTML(
       'beforeend',
-      `<div>
-      <h1>${name}</h1>
-      <h3>${city}, ${country}</h3>
-      <p>${tagline}</p>
+      `<div class="photograph-header_main">
+      <div class="photograph-header_container">
+      <h1 class="photograph-header_name" aria-label="Nom du photographe">${name}</h1>
+      <h3 class="photograph-header_location" aria-label="Adresse du photographe">${city}, ${country}</h3>
+      <p class="photograph-header_tagline" aria-label="Slogan du photographe">${tagline}</p>
     </div>
+    <div class="photograph-header_button">
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-    <div>
-      <img src="${picture}" alt="${name}"></img>
+    </div>
+      <div class="photograph-header_img">
+      <img class="photograph-header_picture"src="${picture}" alt="${name}" aria-label="Photo du photographe ${name}"></img>
+    </div>
     </div>
     `
     )
-    console.log(name)
+    console.log(data)
   }
 
   return {

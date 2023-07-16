@@ -4,8 +4,65 @@
 
 .photograph-header {
     background-color: #FAFAFA;
+    display: flex;
+    flex-direction: row;
     height: 300px;
     margin: 0 100px;
+}
+
+.photograph-header_main {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.photograph-header_container,
+.photograph-header_button,
+.photograph-header_img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 0 2rem;
+}
+
+.photograph-header_container {
+    align-items: start !important;
+}
+
+.photograph-header_name {
+    color: #D3573C;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 83px;
+    letter-spacing: 0rem;
+    text-align: left;
+    margin: 0;
+}
+
+.photograph-header_location {
+    color: #901C1C;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 31px;
+    letter-spacing: 0rem;  
+    margin: 0
+}
+
+.photograph-header_tagline {
+    color:#525252;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0rem;
+}
+
+.photograph-header_picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .contact_button {
