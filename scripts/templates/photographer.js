@@ -64,6 +64,9 @@ const photographerTemplate = (data) => {
     </div>
     `
     )
+    /* Form contact modal title */
+    const contactTitle = document.querySelector('.title_modal')
+    contactTitle.textContent = `Contactez-moi ${name}`
     console.log(data)
   }
 
