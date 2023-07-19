@@ -68,16 +68,11 @@ const photographerTemplate = (data) => {
     const contactTitle = document.querySelector('.title_modal')
     contactTitle.textContent = `Contactez-moi ${name}`
     console.log(data)
+
+    return photographProfil
   }
 
   return {
-    name,
-    picture,
-    city,
-    country,
-    tagline,
-    price,
-    id,
     getUserDOM,
     getUserCardDOM,
   }

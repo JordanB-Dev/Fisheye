@@ -1,4 +1,6 @@
-const mediaTemplate = (media) => {
+const mediaTemplate = (data) => {
+  const { id, photographerId, title, image, likes, date, price } = data
+
   const getMediaCardDOM = () => {
     const article = document.createElement('article')
     const img = document.createElement('img')
@@ -7,9 +9,18 @@ const mediaTemplate = (media) => {
     h2.textContent = 'test'
     article.appendChild(img)
     article.appendChild(h2)
+    console.log(data)
+
     return article
   }
   return {
+    id,
+    photographerId,
+    title,
+    image,
+    likes,
+    date,
+    price,
     getMediaCardDOM,
   }
 }
