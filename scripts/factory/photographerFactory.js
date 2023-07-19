@@ -1,6 +1,6 @@
 const photographerTemplate = (data) => {
   const { name, portrait, city, country, tagline, price, id } = data
-  const picture = `assets/photographers/${portrait}`
+  const picture = `assets/images/photographers/${portrait}`
 
   const getUserCardDOM = () => {
     const article = document.createElement('article')
@@ -71,6 +71,13 @@ const photographerTemplate = (data) => {
   }
 
   return {
+    name,
+    picture,
+    city,
+    country,
+    tagline,
+    price,
+    id,
     getUserDOM,
     getUserCardDOM,
   }

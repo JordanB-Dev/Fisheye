@@ -18,9 +18,12 @@ const getPhotographer = async () => {
     (photographer) => photographer.id == id
   )
 
+  const mediaData = data.media.filter((media) => media.photographerId == id)
+
   return {
     photographer: {
       photographerData: [...photographerData],
+      mediaData: [...mediaData],
     },
   }
 }
@@ -32,10 +35,21 @@ const displayData = async (photographer) => {
   })
 }
 
+const displayMedia = async (photographer) => {
+  const mediaSection = document.querySelector('.media_section')
+
+  photographer.mediaData.forEach((media) => {
+    const mediaModel = mediaTemplate(media)
+    const mediaCardDOM = mediaModel.getMediaCardDOM()
+    mediaSection.appendChild(mediaCardDOM)
+  })
+}
+
 const init = async () => {
   // Récupère les datas des photographes
   const { photographer } = await getPhotographer()
   displayData(photographer)
+  displayMedia(photographer)
 }
 
 init()
