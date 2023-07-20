@@ -57,7 +57,7 @@ const photographerTemplate = (data) => {
       <p class="photograph-header_tagline" aria-label="Slogan du photographe">${tagline}</p>
     </div>
     <div class="photograph-header_button">
-      <button class="contact_button" id="contact_button">Contactez-moi</button>
+    <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </div>
       <div class="photograph-header_img">
       <img class="photograph-header_picture"src="${picture}" alt="${name}" aria-label="Photo du photographe ${name}"></img>

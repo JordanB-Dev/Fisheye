@@ -1,5 +1,4 @@
 const modal = document.getElementById('contact_modal')
-const buttonModal = document.getElementById('contact_button')
 const main = document.getElementById('main')
 const form = document.querySelector('form')
 
@@ -11,16 +10,13 @@ let firstName, lastName, email, message
 
 const regexText = /^[a-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ\s-]{1,31}$/i
 
+// eslint-disable-next-line no-unused-vars
 const displayModal = () => {
   modal.style.display = 'block'
   main.setAttribute('aria-hidden', 'true')
   modal.setAttribute('aria-hidden', 'false')
   modal.setAttribute('aria-modal', 'true')
 }
-
-buttonModal.addEventListener('click', () => {
-  displayModal()
-})
 
 const closeModal = () => {
   modal.style.display = 'none'
