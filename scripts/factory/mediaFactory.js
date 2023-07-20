@@ -10,6 +10,8 @@ const mediaTemplate = (data) => {
     const h2 = document.createElement('h2')
     const span = document.createElement('span')
     const i = document.createElement('i')
+    const info = document.createElement('div')
+    const divLike = document.createElement('div')
 
     if (video) {
       const mediaVideo = `assets/images/medias/${idPage}/${video}`
@@ -41,14 +43,26 @@ const mediaTemplate = (data) => {
       h2.setAttribute('aria-label', 'Titre de l`image')
     }
 
+    info.classList.add('media_info')
+    article.append(info)
+
     h2.textContent = title
     article.appendChild(h2)
+    info.appendChild(h2)
+
+    divLike.classList.add('media_like')
+    article.append(divLike)
+    info.appendChild(divLike)
 
     span.textContent = likes
     article.appendChild(span)
+    info.appendChild(span)
+    divLike.appendChild(span)
 
     i.classList.add('fas', 'fa-heart')
     article.appendChild(i)
+    info.appendChild(i)
+    divLike.appendChild(i)
 
     return article
   }
