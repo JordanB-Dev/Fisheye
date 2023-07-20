@@ -2,34 +2,52 @@ const mediaTemplate = (data) => {
   const params = new URLSearchParams(window.location.search)
   const idPage = params.get('id')
   const { id, photographerId, title, image, video, likes, date, price } = data
-  const picture = `assets/images/medias/${idPage}/${image}`
-  const mediaVideo = `assets/images/medias/${idPage}/${video}`
+  console.log(data)
 
   const getMediaCardDOM = () => {
-    const article = document.createElement('article')
-    const img = document.createElement('img')
-    const videoDOM = document.createElement('video')
-    img.setAttribute('src', picture)
-    videoDOM.setAttribute('controls', 'controls')
-    videoDOM.setAttribute('src', mediaVideo)
-    const h2 = document.createElement('h2')
-    h2.textContent = 'test'
-    article.appendChild(img)
-    article.appendChild(videoDOM)
-    article.appendChild(h2)
-    console.log(data)
+    if (video) {
+      const mediaVideo = `assets/images/medias/${idPage}/${video}`
 
-    return article
+      const article = document.createElement('article')
+
+      const videoDOM = document.createElement('video')
+      const source = document.createElement('source')
+      videoDOM.setAttribute('controls', 'controls')
+      videoDOM.setAttribute('aria-label', `Video ${title}`)
+      videoDOM.setAttribute('type', 'video')
+      source.setAttribute('src', mediaVideo)
+      source.setAttribute('aria-label', `Source de la video ${title}`)
+      source.setAttribute('type', 'video/mp4')
+      article.append(videoDOM)
+      article.appendChild(source)
+      videoDOM.appendChild(source)
+
+      const h2 = document.createElement('h2')
+      h2.textContent = title
+      h2.setAttribute('aria-label', 'Titre de la video')
+      article.appendChild(h2)
+
+      return article
+    } else {
+      const picture = `assets/images/medias/${idPage}/${image}`
+      const article = document.createElement('article')
+
+      const img = document.createElement('img')
+      img.title = title
+      img.alt = title
+      img.setAttribute('aria-label', `Photo ${title}`)
+      img.setAttribute('src', picture)
+      article.appendChild(img)
+
+      const h2 = document.createElement('h2')
+      h2.textContent = title
+      h2.setAttribute('aria-label', 'Titre de l`image')
+      article.appendChild(h2)
+
+      return article
+    }
   }
   return {
-    id,
-    photographerId,
-    title,
-    picture,
-    video,
-    likes,
-    date,
-    price,
     getMediaCardDOM,
   }
 }
