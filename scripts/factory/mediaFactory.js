@@ -8,6 +8,7 @@ const mediaTemplate = (data) => {
     const article = document.createElement('article')
     const h2 = document.createElement('h2')
     const span = document.createElement('span')
+    const i = document.createElement('i')
 
     if (video) {
       const mediaVideo = `assets/images/medias/${idPage}/${video}`
@@ -44,6 +45,9 @@ const mediaTemplate = (data) => {
 
     span.textContent = likes
     article.appendChild(span)
+
+    i.classList.add('fas', 'fa-heart')
+    article.appendChild(i)
 
     return article
   }
