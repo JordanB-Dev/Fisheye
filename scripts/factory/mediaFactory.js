@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const mediaTemplate = (data) => {
   const params = new URLSearchParams(window.location.search)
   const idPage = params.get('id')
@@ -52,6 +53,15 @@ const mediaTemplate = (data) => {
     return article
   }
   return {
+    id,
+    photographerId,
+    title,
+    image,
+    video,
+    likes,
+    date,
+    price,
     getMediaCardDOM,
+    mediaTemplate,
   }
 }

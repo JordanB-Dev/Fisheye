@@ -30,6 +30,7 @@ const getPhotographer = async () => {
 
 const displayData = async (photographer) => {
   photographer.photographerData.forEach((photographer) => {
+    // eslint-disable-next-line no-undef
     const photographerModel = photographerTemplate(photographer)
     photographerModel.getUserDOM()
   })
@@ -39,6 +40,7 @@ const displayMedia = async (photographer) => {
   const mediaSection = document.querySelector('.media_section')
 
   photographer.mediaData.forEach((media) => {
+    // eslint-disable-next-line no-undef
     const mediaModel = mediaTemplate(media)
     const mediaCardDOM = mediaModel.getMediaCardDOM()
     mediaSection.appendChild(mediaCardDOM)

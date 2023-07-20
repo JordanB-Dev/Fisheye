@@ -1,4 +1,5 @@
 const modal = document.getElementById('contact_modal')
+const buttonModal = document.querySelector('.contact_button')
 const main = document.getElementById('main')
 const form = document.querySelector('form')
 
@@ -9,6 +10,10 @@ const inputs = document.querySelectorAll(
 let firstName, lastName, email, message
 
 const regexText = /^[a-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ\s-]{1,31}$/i
+
+buttonModal.addEventListener('click', () => {
+  displayModal()
+})
 
 const displayModal = () => {
   modal.style.display = 'block'
@@ -144,7 +149,7 @@ inputs.forEach((input) => {
         messageChecker(e.target.value)
         break
       default:
-        nul
+        null
     }
   })
 })

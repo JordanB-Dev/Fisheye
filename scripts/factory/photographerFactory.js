@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const photographerTemplate = (data) => {
   const { name, portrait, city, country, tagline, price, id } = data
   const picture = `assets/images/photographers/${portrait}`
@@ -72,8 +73,5 @@ const photographerTemplate = (data) => {
     return photographProfil
   }
 
-  return {
-    getUserDOM,
-    getUserCardDOM,
-  }
+  return { getUserDOM, getUserCardDOM }
 }
