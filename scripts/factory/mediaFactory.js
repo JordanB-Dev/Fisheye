@@ -29,7 +29,7 @@ const mediaTemplate = (data) => {
       article.appendChild(source)
       videoDOM.appendChild(source)
 
-      h2.setAttribute('aria-label', 'Titre de la video')
+      h2.setAttribute('aria-label', `Titre de la video: ${title}`)
     } else {
       const picture = `assets/images/medias/${idPage}/${image}`
 
@@ -40,7 +40,7 @@ const mediaTemplate = (data) => {
       img.setAttribute('src', picture)
       article.appendChild(img)
 
-      h2.setAttribute('aria-label', 'Titre de l`image')
+      h2.setAttribute('aria-label', `Titre de l'image: ${title}`)
     }
 
     info.classList.add('media_info')
@@ -55,11 +55,13 @@ const mediaTemplate = (data) => {
     info.appendChild(divLike)
 
     span.textContent = likes
+    span.setAttribute('aria-label', `Nombre de likes`)
     article.appendChild(span)
     info.appendChild(span)
     divLike.appendChild(span)
 
     i.classList.add('fas', 'fa-heart')
+    i.setAttribute('aria-label', `Heart`)
     article.appendChild(i)
     info.appendChild(i)
     divLike.appendChild(i)
