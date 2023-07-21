@@ -2,7 +2,7 @@
 const mediaTemplate = (data) => {
   const params = new URLSearchParams(window.location.search)
   const idPage = params.get('id')
-  const { id, photographerId, title, image, video, likes, date, price } = data
+  const { title, image, video, likes, price } = data
   console.log(data)
 
   const getMediaCardDOM = () => {
@@ -62,6 +62,21 @@ const mediaTemplate = (data) => {
 
     i.classList.add('fas', 'fa-heart')
     i.setAttribute('aria-label', `Heart`)
+
+    /* Like */
+    i.addEventListener('click', () => {
+      const isLiked = span.toggleAttribute('liked')
+      let likes = span.textContent
+      if (isLiked) {
+        likes++
+        span.setAttribute('aria-label', 'Add like')
+      } else {
+        likes--
+        span.setAttribute('aria-label', 'Remove like')
+      }
+      span.textContent = likes
+    })
+
     article.appendChild(i)
     info.appendChild(i)
     divLike.appendChild(i)
@@ -69,13 +84,6 @@ const mediaTemplate = (data) => {
     return article
   }
   return {
-    id,
-    photographerId,
-    title,
-    image,
-    video,
-    likes,
-    date,
     price,
     getMediaCardDOM,
     mediaTemplate,
