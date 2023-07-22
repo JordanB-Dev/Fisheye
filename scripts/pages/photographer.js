@@ -48,14 +48,14 @@ const displayMedia = async (photographer) => {
 }
 
 const displayCounts = async (photographer) => {
-  const main = document.querySelector('main')
+  const main = document.querySelector('.like_container')
   const count = document.createElement('div')
   const mediaLike = document.querySelectorAll('.media_like-count')
   count.classList.add('counter')
   let totalLikes = 0
 
-  mediaLike.forEach((likesDiv) => {
-    const likes = parseInt(likesDiv.textContent)
+  mediaLike.forEach((Likes) => {
+    const likes = parseInt(Likes.textContent)
     totalLikes += likes
   })
 
