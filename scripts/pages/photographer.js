@@ -1,7 +1,5 @@
 const params = new URLSearchParams(window.location.search)
 const id = params.get('id')
-const paramSort = new URLSearchParams(window.location.search)
-const sort = paramSort.get('sort')
 console.log(id)
 
 const getPhotographer = async () => {
@@ -21,6 +19,9 @@ const getPhotographer = async () => {
   )
 
   const mediaData = data.media.filter((media) => media.photographerId == id)
+
+  const paramSort = new URLSearchParams(window.location.search)
+  const sort = paramSort.get('sort')
 
   if (sort === 'popularity') {
     mediaData.sort((a, b) => b.likes - a.likes)
@@ -78,6 +79,17 @@ const displayCounts = async (photographer) => {
 
   main.appendChild(count)
 }
+
+const filterSort = document.querySelector('#sort_select')
+filterSort.addEventListener('change', (event) => {
+  const sortMethod = event.target.value
+  const paramSort = new URLSearchParams(window.location.search)
+  paramSort.set('sort', sortMethod)
+  window.location.search = paramSort.toString()
+
+  filterSort.value = sortMethod
+  console.log(sortMethod)
+})
 
 const init = async () => {
   // Récupère les datas des photographes
