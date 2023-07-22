@@ -2,8 +2,7 @@
 const mediaTemplate = (data) => {
   const params = new URLSearchParams(window.location.search)
   const idPage = params.get('id')
-  const { title, image, video, likes, price } = data
-  console.log(data)
+  const { title, image, video, likes } = data
 
   const getMediaCardDOM = () => {
     const article = document.createElement('article')
@@ -55,6 +54,7 @@ const mediaTemplate = (data) => {
     info.appendChild(divLike)
 
     span.textContent = likes
+    span.classList.add('media_like-count')
     span.setAttribute('aria-label', `Nombre de likes`)
     article.appendChild(span)
     info.appendChild(span)
@@ -75,6 +75,15 @@ const mediaTemplate = (data) => {
         span.setAttribute('aria-label', 'Remove like')
       }
       span.textContent = likes
+
+      const mediaLike = document.querySelectorAll('.media_like-count')
+      let totalLikes = 0
+      mediaLike.forEach((likesDiv) => {
+        const likes = parseInt(likesDiv.textContent)
+        totalLikes += likes
+      })
+      const counterLikes = document.querySelector('.counter-likes')
+      counterLikes.innerHTML = `${totalLikes} <i class="fas fa-heart"></i>`
     })
 
     article.appendChild(i)
@@ -83,8 +92,8 @@ const mediaTemplate = (data) => {
 
     return article
   }
+
   return {
-    price,
     getMediaCardDOM,
     mediaTemplate,
   }

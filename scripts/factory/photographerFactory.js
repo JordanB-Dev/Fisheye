@@ -46,7 +46,7 @@ const photographerTemplate = (data) => {
     return article
   }
 
-  const getUserDOM = () => {
+  const getPhotographerDOM = () => {
     const photographProfil = document.querySelector('.photograph-header')
     photographProfil.insertAdjacentHTML(
       'beforeend',
@@ -73,5 +73,5 @@ const photographerTemplate = (data) => {
     return photographProfil
   }
 
-  return { getUserDOM, getUserCardDOM }
+  return { getPhotographerDOM, getUserCardDOM }
 }

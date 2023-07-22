@@ -32,7 +32,7 @@ const displayData = async (photographer) => {
   photographer.photographerData.forEach((photographer) => {
     // eslint-disable-next-line no-undef
     const photographerModel = photographerTemplate(photographer)
-    photographerModel.getUserDOM()
+    photographerModel.getPhotographerDOM()
   })
 }
 
@@ -47,11 +47,34 @@ const displayMedia = async (photographer) => {
   })
 }
 
+const displayCounts = async (photographer) => {
+  const main = document.querySelector('main')
+  const count = document.createElement('div')
+  const mediaLike = document.querySelectorAll('.media_like-count')
+  count.classList.add('counter')
+  let totalLikes = 0
+
+  mediaLike.forEach((likesDiv) => {
+    const likes = parseInt(likesDiv.textContent)
+    totalLikes += likes
+  })
+
+  count.innerHTML = `<div class="counter_likes">
+        ${totalLikes} <i class="fas fa-heart"></i>
+    </div>
+    <div class="counter_daily">
+        ${photographer.photographerData[0].price} <span>€ /jour</span>
+    </div>`
+
+  main.appendChild(count)
+}
+
 const init = async () => {
   // Récupère les datas des photographes
   const { photographer } = await getPhotographer()
   displayData(photographer)
   displayMedia(photographer)
+  displayCounts(photographer)
 }
 
 init()
