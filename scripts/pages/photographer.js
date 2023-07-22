@@ -1,6 +1,7 @@
 const params = new URLSearchParams(window.location.search)
 const id = params.get('id')
-console.log(id)
+const paramSort = new URLSearchParams(window.location.search)
+const sort = paramSort.get('sort')
 
 const getPhotographer = async () => {
   const errorApi = document.querySelector('main')
@@ -19,9 +20,6 @@ const getPhotographer = async () => {
   )
 
   const mediaData = data.media.filter((media) => media.photographerId == id)
-
-  const paramSort = new URLSearchParams(window.location.search)
-  const sort = paramSort.get('sort')
 
   if (sort === 'popularity') {
     mediaData.sort((a, b) => b.likes - a.likes)
@@ -83,7 +81,7 @@ const displayCounts = async (photographer) => {
 const filterSort = document.querySelector('#sort_select')
 filterSort.addEventListener('change', (event) => {
   const sortMethod = event.target.value
-  const paramSort = new URLSearchParams(window.location.search)
+
   paramSort.set('sort', sortMethod)
   window.location.search = paramSort.toString()
 
@@ -97,6 +95,14 @@ const init = async () => {
   displayData(photographer)
   displayMedia(photographer)
   displayCounts(photographer)
+
+  if (sort === 'date') {
+    filterSort.selectedIndex = 1
+  } else if (sort === 'title') {
+    filterSort.selectedIndex = 2
+  } else {
+    filterSort.selectedIndex = 0
+  }
 }
 
 init()
