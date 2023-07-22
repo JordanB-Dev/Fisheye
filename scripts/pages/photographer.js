@@ -1,5 +1,7 @@
 const params = new URLSearchParams(window.location.search)
 const id = params.get('id')
+const paramSort = new URLSearchParams(window.location.search)
+const sort = paramSort.get('sort')
 console.log(id)
 
 const getPhotographer = async () => {
@@ -19,6 +21,14 @@ const getPhotographer = async () => {
   )
 
   const mediaData = data.media.filter((media) => media.photographerId == id)
+
+  if (sort === 'popularity') {
+    mediaData.sort((a, b) => b.likes - a.likes)
+  } else if (sort === 'date') {
+    mediaData.sort((a, b) => new Date(b.date) - new Date(a.date))
+  } else if (sort === 'title') {
+    mediaData.sort((a, b) => a.title.localeCompare(b.title))
+  }
 
   return {
     photographer: {
