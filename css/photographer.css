@@ -90,6 +90,34 @@
 ::-webkit-scrollbar {
     display: none;
 }
+.photograph_sort {
+    margin: 1.25rem 6.25rem 0 6.25rem;
+    display: flex;
+}
+
+.sort_container {
+    display: flex;
+    align-items: center;
+    margin-top: 1.875rem;
+}
+
+.sort_container label {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-right: 1.25rem;
+  }
+
+  .sort_container select {
+    font-size: 0.875rem;
+    font-weight: 400;
+    background-color: #901C1C;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    width: auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 
 .media_section {
     display: flex;
@@ -143,6 +171,30 @@
 
 .media_section .media_info .media_like i:hover {
     cursor: pointer;
+}
+
+.counter_likes {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.counter {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    bottom: 0;
+    background: #DB8876;
+    width: 12.5rem;
+    padding: 0.8rem;
+    right: 1.25rem;
+    border-radius: 0.313rem 0.313rem 0 0;
+}
+
+
+.counter_likes i, .counter_daily span {
+    margin-left: 0.313rem;
 }
 
 .modal {
