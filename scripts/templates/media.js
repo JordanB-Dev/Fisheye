@@ -82,7 +82,7 @@ const mediaTemplate = (data) => {
         const likes = parseInt(likesDiv.textContent)
         totalLikes += likes
       })
-      const counterLikes = document.querySelector('.counter-likes')
+      const counterLikes = document.querySelector('.counter_likes')
       counterLikes.innerHTML = `${totalLikes} <i class="fas fa-heart"></i>`
     })
 
