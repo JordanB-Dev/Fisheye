@@ -56,6 +56,17 @@ const displayMedia = async (photographer) => {
   })
 }
 
+const displayLightBox = async (photographer) => {
+  const lightBoxContainer = document.querySelector('.lightbox_container')
+
+  photographer.mediaData.forEach((media) => {
+    // eslint-disable-next-line no-undef
+    const lightBoxModel = lightBoxTemplate(media)
+    const lightBoxCardDOM = lightBoxModel.getLightBoxCardDOM()
+    lightBoxContainer.appendChild(lightBoxCardDOM)
+  })
+}
+
 const displayCounts = async (photographer) => {
   const main = document.querySelector('.like_container')
   const count = document.createElement('div')
@@ -94,6 +105,7 @@ const init = async () => {
   const { photographer } = await getPhotographer()
   displayData(photographer)
   displayMedia(photographer)
+  displayLightBox(photographer)
   displayCounts(photographer)
 
   if (sort === 'date') {
