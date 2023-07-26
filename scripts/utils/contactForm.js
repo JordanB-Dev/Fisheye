@@ -150,6 +150,15 @@ inputs.forEach((input) => {
   })
 })
 
+const keyCodeEscape = (e) => {
+  if (e.keyCode === 27) {
+    e.preventDefault()
+    closeModal()
+  }
+}
+
+document.addEventListener('keydown', keyCodeEscape)
+
 form.addEventListener('submit', (e) => {
   e.preventDefault()
 
