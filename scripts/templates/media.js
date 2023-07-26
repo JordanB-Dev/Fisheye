@@ -9,6 +9,7 @@ const mediaTemplate = (data) => {
     const h2 = document.createElement('h2')
     const span = document.createElement('span')
     const i = document.createElement('i')
+    i.setAttribute('tabIndex', '0')
     const info = document.createElement('div')
     const divLike = document.createElement('div')
 
@@ -62,9 +63,8 @@ const mediaTemplate = (data) => {
 
     i.classList.add('fas', 'fa-heart')
     i.setAttribute('aria-label', `Heart`)
-
     /* Like */
-    i.addEventListener('click', () => {
+    const likeHeart = () => {
       const isLiked = span.toggleAttribute('liked')
       let likes = span.textContent
       if (isLiked) {
@@ -84,6 +84,16 @@ const mediaTemplate = (data) => {
       })
       const counterLikes = document.querySelector('.counter_likes')
       counterLikes.innerHTML = `${totalLikes} <i class="fas fa-heart"></i>`
+    }
+
+    i.addEventListener('click', () => {
+      likeHeart()
+    })
+
+    i.addEventListener('keydown', (e) => {
+      if (e.keyCode === 13) {
+        likeHeart()
+      }
     })
 
     article.appendChild(i)
