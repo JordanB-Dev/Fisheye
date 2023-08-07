@@ -94,7 +94,11 @@ const lastChecker = (value) => {
 const emailChecker = (value) => {
   const border = document.getElementById('email')
 
-  if (!value.match(/^[\w_-]+@[\w-]+\.[a-z]{2,4}$/i)) {
+  if (
+    !value.match(
+      /^[a-zA-Z0-9æœ.!#$%&’*+/=?^_`{|}~"(),:;<>@[\]-]+@([\w-]+\.)+[\w-]{2,4}$/i
+    )
+  ) {
     errorDisplay('email', " L'adresse électronique n'est pas valide")
     addError(border)
     email = null
