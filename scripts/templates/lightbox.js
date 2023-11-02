@@ -1,9 +1,11 @@
+// Function to update the lightbox with media details.
 // eslint-disable-next-line no-unused-vars
 const lightBoxTemplate = (data) => {
   const params = new URLSearchParams(window.location.search)
   const idPage = params.get('id')
   const { id, title, image, video } = data
 
+  // Update DOM elements with media details.
   const getLightBoxCardDOM = () => {
     const divContent = document.createElement('div')
     const divContainer = document.createElement('div')
@@ -60,8 +62,8 @@ const lightBoxTemplate = (data) => {
     divContainer.appendChild(h2)
     divH2.appendChild(h2)
 
+    // Check if the clicked image or video has the same identifier (ID) to open it in a lightbox.
     const mediaLinks = document.querySelectorAll('.media_link')
-
     mediaLinks.forEach((lightbox) => {
       lightbox.addEventListener('click', (e) => {
         e.preventDefault()
@@ -93,11 +95,13 @@ const lightBoxTemplate = (data) => {
   }
 }
 
+// Open
 const openLightbox = () => {
   document.querySelector('.lightbox').style.display = 'block'
   document.querySelector('.lightbox').setAttribute('aria-hidden', 'false')
 }
 
+// Close
 const closeLightbox = () => {
   document.querySelector('.lightbox').style.display = 'none'
   document.querySelector('.lightbox').setAttribute('aria-hidden', 'true')
@@ -109,6 +113,7 @@ closeButton.addEventListener('click', () => {
   closeLightbox()
 })
 
+// KEYBOARD
 const keyCodeLightBox = (e) => {
   if (e.keyCode === 27) {
     e.preventDefault()
@@ -134,6 +139,7 @@ nextButton.addEventListener('click', () => {
   showNextMedia()
 })
 
+// Function to display the next media in the lightbox.
 const showNextMedia = () => {
   const medias = document.querySelectorAll('.lightbox_content')
   for (let i = 0; i < medias.length; i++) {
@@ -155,6 +161,7 @@ prevButton.addEventListener('click', () => {
   showPrevMedia()
 })
 
+// Function to display the next media in the lightbox.
 const showPrevMedia = () => {
   const medias = document.querySelectorAll('.lightbox_content')
   for (let i = 0; i < medias.length; i++) {
