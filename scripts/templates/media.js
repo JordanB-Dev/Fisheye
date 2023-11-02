@@ -4,6 +4,7 @@ const mediaTemplate = (data) => {
   const idPage = params.get('id')
   const { id, title, image, video, likes } = data
 
+  // Update DOM elements with media details.
   const getMediaCardDOM = () => {
     const article = document.createElement('article')
     const a = document.createElement('a')
@@ -84,7 +85,8 @@ const mediaTemplate = (data) => {
 
     i.classList.add('fas', 'fa-heart')
     i.setAttribute('aria-label', `Heart`)
-    /* Like */
+
+    // Like
     const likeHeart = () => {
       const isLiked = span.toggleAttribute('liked')
       let likes = span.textContent

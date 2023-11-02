@@ -3,6 +3,7 @@ const photographerTemplate = (data) => {
   const { name, portrait, city, country, tagline, price, id } = data
   const picture = `assets/images/photographers/${portrait}`
 
+  // Update DOM elements with photographer details.
   const getUserCardDOM = () => {
     const article = document.createElement('article')
     const link = document.createElement('a')
@@ -46,6 +47,7 @@ const photographerTemplate = (data) => {
     return article
   }
 
+  // Update the header DOM elements with the photographer's details.
   const getPhotographerDOM = () => {
     const photographProfil = document.querySelector('.photograph-header')
     photographProfil.insertAdjacentHTML(
@@ -65,7 +67,8 @@ const photographerTemplate = (data) => {
     </div>
     `
     )
-    /* Form contact modal title */
+
+    // Form contact modal title
     const contactTitle = document.querySelector('.title_modal')
     contactTitle.textContent = `Contactez-moi ${name}`
     console.log(data)

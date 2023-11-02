@@ -10,6 +10,7 @@ let firstName, lastName, email, message
 
 const regexText = /^[a-záàâäãåçéèêëíìîïñóòôöõúùûüýÿæœ\s-]{1,31}$/i
 
+// Open
 // eslint-disable-next-line no-unused-vars
 const displayModal = () => {
   modal.style.display = 'block'
@@ -18,6 +19,7 @@ const displayModal = () => {
   modal.setAttribute('aria-modal', 'true')
 }
 
+// Close
 const closeModal = () => {
   modal.style.display = 'none'
   main.setAttribute('aria-hidden', 'false')
@@ -25,6 +27,7 @@ const closeModal = () => {
   modal.setAttribute('aria-modal', 'false')
 }
 
+// Show error message
 const errorDisplay = (tag, message, valid) => {
   const span = document.querySelector('.' + tag + '-container > span')
 
@@ -37,15 +40,18 @@ const errorDisplay = (tag, message, valid) => {
   }
 }
 
+// Add message error
 const addError = (border) => {
   border.setAttribute('data-error', 'true')
   border.setAttribute('data-succes', 'false')
 }
 
+// Add message success
 const addSucces = (border) => {
   border.setAttribute('data-error', 'false')
 }
 
+// check first
 const firstChecker = (value) => {
   const border = document.getElementById('first')
 
@@ -70,6 +76,7 @@ const firstChecker = (value) => {
   }
 }
 
+// check last
 const lastChecker = (value) => {
   const border = document.getElementById('last')
 
@@ -91,6 +98,7 @@ const lastChecker = (value) => {
   }
 }
 
+// check email
 const emailChecker = (value) => {
   const border = document.getElementById('email')
 
@@ -109,6 +117,7 @@ const emailChecker = (value) => {
   }
 }
 
+// check message
 const messageChecker = (value) => {
   const border = document.getElementById('message')
 
@@ -154,6 +163,7 @@ inputs.forEach((input) => {
   })
 })
 
+// KEYBOARD
 const keyCodeEscape = (e) => {
   if (e.keyCode === 27) {
     e.preventDefault()
