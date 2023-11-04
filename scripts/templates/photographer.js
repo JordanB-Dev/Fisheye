@@ -13,7 +13,7 @@ const photographerTemplate = (data) => {
     const content = document.createElement('p')
     const pricing = document.createElement('span')
 
-    link.href = `./photographer.html?id=${id}&sort=popularity`
+    link.href = `./photographer.html?id=${id}`
     link.title = `Aller vers la page de ${name}`
     article.append(link)
 

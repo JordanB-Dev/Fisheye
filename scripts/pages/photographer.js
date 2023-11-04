@@ -2,12 +2,8 @@
 const params = new URLSearchParams(window.location.search)
 // Get the value of the "id" URL parameter.
 const id = params.get('id')
-// Get the parameters from the current page's URL.
-const paramSort = new URLSearchParams(window.location.search)
-// Get the value of the "popularity, date, or title" URL parameter.
-const sort = paramSort.get('sort')
-
 // Async function to retrieve photographers data from the JSON file.
+
 const getPhotographer = async () => {
   const errorApi = document.querySelector('main')
   // Data retrieved from the JSON
@@ -27,16 +23,9 @@ const getPhotographer = async () => {
   )
 
   // extract media objects by photographer ID
-  const mediaData = data.media.filter((media) => media.photographerId == id)
-
-  // Sort the media by popularity, date, and title.
-  if (sort === 'popularity') {
-    mediaData.sort((a, b) => b.likes - a.likes)
-  } else if (sort === 'date') {
-    mediaData.sort((a, b) => new Date(b.date) - new Date(a.date))
-  } else if (sort === 'title') {
-    mediaData.sort((a, b) => a.title.localeCompare(b.title))
-  }
+  const mediaData = data.media
+    .filter((media) => media.photographerId == id)
+    .map((obj) => obj)
 
   // Returns the photographers and media tables only once
   return {
@@ -59,11 +48,11 @@ const displayData = async (photographer) => {
 // Async function to display media data in the dedicated .media_section "media.js getMediaCardDOM()"
 const displayMedia = async (photographer) => {
   const mediaSection = document.querySelector('.media_section')
-
-  photographer.mediaData.forEach((media) => {
+  mediaSection.textContent = ''
+  photographer.forEach((media) => {
     // eslint-disable-next-line no-undef
     const mediaModel = mediaTemplate(media)
-    const mediaCardDOM = mediaModel.getMediaCardDOM()
+    const mediaCardDOM = mediaModel.getMediaCardDOM(media)
     mediaSection.appendChild(mediaCardDOM)
   })
 }
@@ -106,34 +95,49 @@ const displayCounts = async (photographer) => {
   main.appendChild(count)
 }
 
-// Async function that retrieves parameters from the current page's URL to update the selected option.
-const filterSort = document.querySelector('#sort_select')
-filterSort.addEventListener('change', (event) => {
-  const sortMethod = event.target.value
-
-  paramSort.set('sort', sortMethod)
-  window.location.search = paramSort.toString()
-
-  filterSort.value = sortMethod
-  console.log(sortMethod)
-})
+const sortMedia = async () => {
+  const filterSort = document.querySelector('#sort_select')
+  const { photographer } = await getPhotographer()
+  let result = []
+  filterSort.addEventListener('change', (event) => {
+    switch (event.target.value) {
+      case 'date':
+        result = photographer.mediaData.sort((a, b) =>
+          a.date > b.date ? 1 : -1
+        )
+        filterSort.selectedIndex = 1
+        break
+      case 'title':
+        result = photographer.mediaData.sort((a, b) =>
+          a.title > b.title ? 1 : -1
+        )
+        filterSort.selectedIndex = 2
+        break
+      case 'popularity':
+        result = photographer.mediaData.sort((a, b) =>
+          b.likes > a.likes ? 1 : -1
+        )
+        filterSort.selectedIndex = 0
+        break
+      default:
+        null
+    }
+    displayMedia(result)
+  })
+}
 
 // Initialization function to retrieve photographers' data and display it.
 const init = async () => {
   // Retrieve photographers' data.
   const { photographer } = await getPhotographer()
+
   displayData(photographer)
-  displayMedia(photographer)
+  displayMedia(
+    photographer.mediaData.sort((a, b) => (b.likes > a.likes ? 1 : -1))
+  )
   displayLightBox(photographer)
   displayCounts(photographer)
-
-  if (sort === 'date') {
-    filterSort.selectedIndex = 1
-  } else if (sort === 'title') {
-    filterSort.selectedIndex = 2
-  } else {
-    filterSort.selectedIndex = 0
-  }
+  sortMedia()
 }
 
 init()
