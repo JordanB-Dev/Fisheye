@@ -85,3 +85,18 @@ h1 {
     font-size: 0.75rem;
     font-weight: 400;
 }
+
+@media screen and (max-width: 1000px) {
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+    .photographer_section {
+        grid-template-columns: 1fr;
+    }
+
+}
