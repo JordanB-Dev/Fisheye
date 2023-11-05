@@ -43,9 +43,8 @@ const lightBoxTemplate = (data) => {
       const picture = `assets/images/medias/${idPage}/${image}`
 
       const img = document.createElement('img')
-      img.title = title
       img.alt = title
-      img.setAttribute('aria-label', `Photo ${title}`)
+      img.setAttribute('aria-label', `Photo`)
       img.setAttribute('src', picture)
       img.classList.add('media_img_video')
       img.setAttribute('_id', `${id}`)

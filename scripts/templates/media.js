@@ -20,6 +20,7 @@ const mediaTemplate = (data) => {
 
       a.classList.add('media_link')
       a.setAttribute('href', mediaVideo)
+      a.setAttribute('aria-label', `Link`)
       article.appendChild(a)
 
       const videoDOM = document.createElement('video')
@@ -52,7 +53,7 @@ const mediaTemplate = (data) => {
       article.appendChild(a)
 
       const img = document.createElement('img')
-      img.title = title
+
       img.alt = title
       img.classList.add('media_img_video')
       img.setAttribute('aria-label', `Photo ${title}`)
