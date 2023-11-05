@@ -129,6 +129,7 @@
 .media_section article {
     flex: 1 1 30%;
     padding: 1.25rem;
+    max-width: 30%;
   }
 
 .media_section article img,
